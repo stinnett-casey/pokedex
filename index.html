@@ -6,7 +6,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://rawgit.com/stinnett-casey/pokemon-fetch-cacher/master/cacher.js"></script>
     <script src="https://rawgit.com/stinnett-casey/pokemon-fetch-cacher/master/pokemon-array.js"></script>
-    <script src="js/typed.min.js"></script>
+    <script src="https://unpkg.com/tippy.js@2.1.1/dist/tippy.all.min.js"></script>
+    <script src="js/pokedex.js"></script>
     <script src="js/index.js"></script>
     <link rel="stylesheet" href="css/index.css"/>
   </head>
@@ -30,7 +31,7 @@
         <div id="border-screen">
           <div id="button-top1"></div>
           <div id="button-top2"></div>
-          <div id="button-bottom"></div>
+          <div id="button-bottom" title="Click to Favorite"></div>
           <p class="selectDisable">&equiv;&equiv;</p>
         </div>
         <div id="screen">
@@ -41,7 +42,7 @@
           </div>
         </div>
         <div id="triangle"></div>
-        <div id="blue-button-left"></div>
+        <div id="blue-button-left" title="Show Pokemon"></div>
         <div id="green-button-left"></div>
         <div id="orange-button-left"></div>
         <div id="square-button-left">
@@ -72,21 +73,24 @@
         </div>
       <div id="right">
         <div id="info-screen">
-          <h6 id="name">
-            Name: <span></span>
-          </h6>
-          <h6 id="type">
-            Type: <span></span>
-          </h6>
-          <h6 id="weight">
-            Weight: <span></span>
-          </h6>
-          <h6 id="height">
-            Height: <span></span>
-          </h6>
-          <h6 id="id">
-            Id: <span></span>
-          </h6>
+          <div id="pokedata">
+            <h6 id="name">
+              Name: <span></span>
+            </h6>
+            <h6 id="type">
+              Type: <span></span>
+            </h6>
+            <h6 id="weight">
+              Weight: <span></span>
+            </h6>
+            <h6 id="height">
+              Height: <span></span>
+            </h6>
+            <h6 id="id">
+              Id: <span></span>
+            </h6>
+          </div>
+          <div id="favorites"></div>
         </div>
         <div id="keyboard">
           <div class="key"></div>
@@ -102,7 +106,7 @@
         </div>
         <div id="leaf-button-right"></div>
         <div id="yellow-button-right"></div>
-        <div id="green-button-right"></div>
+        <div id="green-button-right" title="Show Favorites List"></div>
         <div id="orange-button-right"></div>
         <div id="left-cross-button">
           <div id="leftT"></div>
