@@ -1,3 +1,7 @@
+String.prototype.capitalize = function() {
+  return this[0].toUpperCase() + this.substr(1);
+};
+
 class Pokedex {
   constructor(){
     this.pokemonArray = pokemonArray;
@@ -9,16 +13,17 @@ class Pokedex {
   }
 
   addToFavorites(){
-    if ($('.active').data('name') !== this.currentPokemon.name) {
-      this.showDetails(() => {
-        let { pokename } = this.currentPokemon;
-        // Make sure the name isn't already in there
-        if (this.favorites.indexOf(pokename) === -1) {
-          this.favorites.push(this.currentPokemon);
-        }
-        this.generateFavsList();
-      });
+    if ($('.active').data('name') === this.currentPokemon.name) {
+      this.showDetails();
     }
+    this.showDetails(() => {
+      let { pokename } = this.currentPokemon;
+      // Make sure the name isn't already in there
+      if (this.favorites.indexOf(pokename) === -1) {
+        this.favorites.push(this.currentPokemon);
+      }
+      this.generateFavsList();
+    });
   }
 
   removeFromFavorites(){
@@ -51,9 +56,7 @@ class Pokedex {
       $(this).removeClass('light-pulse').dequeue();
     });
 
-    cachedFetch(this.base_url + encodeURI(pokemon))
-    .then(r => r.json())
-    .then(results => { 
+    $.get(this.base_url + encodeURI(pokemon), (results) => {
       this.currentPokemon = results;
       
       this.setData();
@@ -71,6 +74,26 @@ class Pokedex {
       // remove spinning pokeball loading image
       setTimeout($('.loading-image').hide(), 1000);
     });
+    // cachedFetch(this.base_url + encodeURI(pokemon))
+    // .then(r => r.json())
+    // .then(results => { 
+    //   this.currentPokemon = results;
+      
+    //   this.setData();
+
+    //   this.setImages();
+
+    //   this.setId();
+
+    //   this.showData();
+
+    //   if (func !== undefined) {
+    //     func();
+    //   }
+
+    //   // remove spinning pokeball loading image
+    //   setTimeout($('.loading-image').hide(), 1000);
+    // });
   }
 
   favoritePokemon(pokemon){
